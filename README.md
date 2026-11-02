@@ -1,3 +1,4 @@
+https://github.com/happyc0der/atlas-engine
 
 # Архитектура движка пошаговой стратегии (TBS Engine Architecture)
 
