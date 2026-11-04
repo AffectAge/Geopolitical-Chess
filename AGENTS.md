@@ -77,53 +77,97 @@ If documentation and code disagree, prefer ask human and mention the mismatch in
 
 ---
 
+
 ## Tech Stack
 
-Do not write “latest”. Use exact versions or supported ranges.
+Do not write "latest". Use exact versions or supported ranges.
 
 ### Core Stack
 
-
 - Language(s): TypeScript 6.0.3, JavaScript (ES Modules)
 - Runtime(s): Node.js 26.x LTS, modern web browsers (WebGL/Canvas)
-- Framework(s): React 19.3.1, Phaser 4.2.1, Tailwind CSS 4.3.3, Zustand 5.0.16, Zod 4.6.7
-- Package manager(s): npm (bundled with Node.js 26; package-lock.json)
+- Framework(s): React 19.3.1, Phaser 4.2.1, Tailwind CSS 4.3.3
+- Package manager(s): npm (Node.js 26 bundled version; package-lock.json)
 - Build tool(s): Vite 8.3.5, TypeScript Compiler 6.0.3, tsx ^4.20.6
 - Database(s): SQLite via better-sqlite3 13.0.3
 - Messaging / queueing: HTTP API, WebSocket (ws 8.22.1); no external message broker or queue
-- Cache / storage: SQLite persistence, in-memory caches, client-side caching
-- Hosting / infrastructure: None
+- Cache / storage: SQLite persistence, in-memory caches, browser-side caching
+- Hosting / infrastructure: None (deployment provider not configured)
 
 ### Key Libraries And Services
 
-List the important tools the agent should recognize immediately:
-
 | Area | Library / Service | Version | Purpose | Notes / Constraints |
 | --- | --- | --- | --- | --- |
-| `<frontend/backend/data/auth/etc>` | `<name>` | `<version>` | `<why it exists>` | `<special rules>` |
-| `<frontend/backend/data/auth/etc>` | `<name>` | `<version>` | `<why it exists>` | `<special rules>` |
-| `<frontend/backend/data/auth/etc>` | `<name>` | `<version>` | `<why it exists>` | `<special rules>` |
+| Language | TypeScript | 6.0.3 | Type-safe client, server, and simulation code | Strict typing; avoid `any` |
+| Runtime | Node.js | 26.x LTS | Server runtime and development tools | Maintain compatibility with native dependencies |
+| Frontend | React | 19.3.1 | User interface and application components | Keep UI separate from gameplay simulation |
+| Rendering | Phaser | 4.2.1 | Hexagonal map, sprites, animations, and input | Rendering only; no authoritative gameplay logic |
+| Styling | Tailwind CSS | 4.3.3 | UI styling and responsive layouts | Reuse existing design conventions |
+| State management | Zustand | 5.0.16 | Client-side application state | Avoid duplicating authoritative server state |
+| Validation | Zod | 4.6.7 | Runtime schema validation | Validate external inputs and data-driven content |
+| Backend | Node.js HTTP API | 26.x LTS | Authentication, game commands, and world data | Server-authoritative operations |
+| Networking | ws | 8.22.1 | Real-time client-server communication | Validate messages; support reconnect and resynchronization |
+| Database | better-sqlite3 | 13.0.3 | SQLite persistence and transactions | Preserve transactional consistency |
+| Build | Vite | 8.3.5 | Frontend development and production builds | Reuse existing Vite configuration |
+| Build | tsx | ^4.20.6 | TypeScript execution during development | Development tooling only |
+| Testing | Vitest | 5.0.4 | Unit and integration tests | Test deterministic simulation behavior |
+| Testing | Playwright | 1.64.0 | Browser and end-to-end testing | Verify UI and browser interactions |
+| Linting | ESLint | 10.12.0 | Static code analysis | Do not disable rules without justification |
+| Formatting | Prettier | 3.9.10 | Consistent code formatting | Follow repository configuration |
+| Icons | lucide-react | ^1.55.0 | UI icons | Reuse existing icons |
+| Procedural generation | simplex-noise | 4.0.3 | Noise-based procedural generation | Preserve deterministic generation |
+| Development | GitHub Codespaces | Managed | Cloud development environment | Development only; not production hosting |
 
 ### Version Policy
 
-- Required versions: `<exact_versions_or_ranges>`
-- Version source of truth: `<package.json | pyproject.toml | go.mod | Gemfile | Dockerfile | etc>`
-- Dependency update policy: `<manual | renovate | dependabot | scheduled>`
-- Compatibility requirements: `<browser matrix | runtime matrix | API compatibility | DB compatibility>`
+- Required versions:
+  - TypeScript: 6.0.3
+  - Node.js: 26.x LTS
+  - React: 19.3.1
+  - Phaser: 4.2.1
+  - Vite: 8.3.5
+  - Tailwind CSS: 4.3.3
+  - Zustand: 5.0.16
+  - Zod: 4.6.7
+  - better-sqlite3: 13.0.3
+  - ws: 8.22.1
+  - Other dependencies: versions declared in package.json and resolved in package-lock.json
 
-### Example
+- Version source of truth:
+  - package.json: declared dependency versions and runtime requirements
+  - package-lock.json: exact resolved dependency versions
+  - .nvmrc or equivalent: Node.js version, if present
 
-```md
-- Language(s): TypeScript 5.6
-- Runtime(s): Node.js 22.x
-- Framework(s): Next.js 15, React 19
-- Package manager(s): pnpm 10
-- Build tool(s): Turborepo 2
-- Database(s): PostgreSQL 16
-- Messaging / queueing: none
-- Cache / storage: Redis 7, S3
-- Hosting / infrastructure: AWS
-```
+- Dependency update policy:
+  - Manual updates only.
+  - Do not automatically upgrade dependencies.
+  - Evaluate compatibility, maintenance status, security, and performance before proposing updates.
+  - Prefer existing dependencies over introducing new ones.
+  - Obtain explicit user approval before adding, removing, replacing, or upgrading dependencies.
+  - Update package.json and package-lock.json together.
+  - Run validation after approved dependency changes.
+
+- Compatibility requirements:
+  - Support modern Chromium, Firefox, and Safari browsers.
+  - Maintain compatibility with Android and iOS mobile browsers.
+  - Preserve WebGL rendering and supported Canvas fallback behavior.
+  - Preserve compatibility between client and server network protocols.
+  - Preserve compatibility with existing SQLite schemas and saved game data.
+  - Maintain deterministic server-side turn simulation.
+  - Avoid Node.js-only APIs in browser code.
+  - Do not introduce platform-specific dependencies without approval.
+  - Do not introduce Redis, PostgreSQL, message brokers, or external infrastructure without explicit user approval.
+
+### Validation Commands
+
+- Type checking: `npm run typecheck`
+- Linting: `npm run lint`
+- Formatting: `npm run format:check`
+- Combined checks: `npm run check`
+- Tests: `npm test`
+- Production build: `npm run build`
+
+All applicable checks must pass before implementation is considered complete.
 
 ---
 
