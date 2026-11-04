@@ -13,30 +13,10 @@ This file is the primary operating manual for AI agents working in this reposito
 - Project name: `Online Geopolitic Game`
 - Project type: `web app`
 - One-line description: `This is a global, turn-based, online strategy game.`
-- Lifecycle stage: `production`
+- Lifecycle stage: `Production`
 - Maintainers / owning team: `OGG Team`
 - Default branch: `main`
 - Repo status notes: `none`
-
-### Fill-In Guidance
-
-- Write the description for an engineer, not for marketing.
-- If the system is legacy or mid-migration, say so explicitly.
-- If the repository contains multiple products or apps, mention that here and define the structure below.
-
-### Example
-
-```md
-- Project name: Acme Orders
-- Project type: Monorepo
-- One-line description: Internal platform for creating, pricing, and tracking wholesale orders.
-- Primary users: Sales operators, finance team, warehouse integrations
-- Business/domain context: B2B commerce
-- Lifecycle stage: Production
-- Maintainers / owning team: Orders Platform Team
-- Default branch: main
-- Repo status notes: Legacy pricing flow is being migrated into feature-owned modules
-```
 
 ---
 
