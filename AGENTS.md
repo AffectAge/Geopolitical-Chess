@@ -183,11 +183,69 @@ Gameplay mechanics must remain independent of rendering,networking, database imp
 The project should evolve as a modular monolith.
   Microservices must not be introduced without demonstrated need.
 
-- Main modules / bounded contexts: - Domain simulation — deterministic gameplay rules and calculations.
-  - Application layer — commands, use cases, turn orchestration, and transactions.
-  - Infrastructure — database persistence, HTTP API, WebSocket, and external integrations.
-  - Presentation — React UI, Phaser map rendering, and client-side interaction.
-  - Content — data-driven definitions, balancing parameters, and visual assets.
+- Main modules / bounded contexts:
+  - World & Geography: Hexagonal map, terrain, biomes, climate, regions,
+    provinces, states, borders, and map topology.
+
+  - Countries & Politics:
+    Countries, governments, political systems,
+    reforms, laws, parties, and national administration.
+
+ - Population:
+    Population groups, demographics, culture, professions, religion, needs, migration,employment, and political preferences.
+
+  - Economy:
+    Resources, production, buildings, factories,goods, markets, prices, wages, employment,consumption, and economic simulation.
+
+  - Trade & Logistics:
+    Trade routes, transportation networks,
+    infrastructure, supply,
+    distribution, and transportation costs.
+
+- Finance:
+    National budgets, taxation, tariffs,
+    government spending, debt, and treasury.
+
+  - Diplomacy:
+    International relations, treaties, alliances,
+    influence, negotiations, and diplomatic actions.
+
+  - Military:
+    Armies, units, recruitment, movement,
+    combat, mobilization, attrition, and supply.
+
+- Technology:
+    Research, technologies, inventions,
+    modifiers, and unlockable capabilities.
+
+  - Construction & Development:
+    Construction projects, infrastructure upgrades,
+    building levels.
+
+  - Events & Decisions:
+    Historical events, dynamic events,
+    scripted decisions, triggers, and effects.
+
+  - Multiplayer & Accounts:
+    Authentication, sessions, player-country ownership,
+    permissions, connections, and synchronization.
+
+  - Map Visualization:
+    Phaser rendering, terrain transitions,
+    decorations, seasonal visuals, overlays,
+    visual states, and viewport management.
+
+- UI & Interaction:
+    React components, menus, panels, tooltips,
+    notifications, and player interaction.
+
+  - Content & Modding:
+    Data-driven definitions, schemas,
+    configuration, localization, and assets.
+
+  These are logical domain boundaries.
+  They do not imply that every module already exists.
+
 - Main data flow: `<request/event/render flow>`
 - State management approach: `<if relevant>`
 - Integration boundaries: `<external APIs, internal services, SDKs, jobs, queues>`
