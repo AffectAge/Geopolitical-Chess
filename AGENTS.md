@@ -1,13 +1,12 @@
-AGENTS.md — Game Development Architecture & Project Rules
+# AGENTS.md — Game Development Architecture & Project Rules
 
-1. Project Overview
+## 1. Project Overview
 
 This project is a multiplayer, turn-based strategy game with a hexagonal world map.
 
-Technology stack: TypeScript, React, Vite, Phaser, and the existing server-side infrastructure.
+**Technology stack:** TypeScript, React, Vite, Phaser, and the existing server-side infrastructure.
 
-Engineering priorities:
-
+**Engineering priorities:**
 - Maintainability and modularity.
 - Performance and scalability.
 - Reusability and minimal code duplication.
@@ -16,15 +15,15 @@ Engineering priorities:
 - Compatibility with existing systems.
 - Minimal architectural complexity.
 
-Core principle: Prefer existing, proven solutions over custom implementations. Prefer simple solutions over unnecessary abstractions.
+**Core principle:** Prefer existing, proven solutions over custom implementations. Prefer simple solutions over unnecessary abstractions.
 
 These instructions apply to all AI agents creating, modifying, reviewing, or refactoring project code.
 
-2. Repository Discovery
+## 2. Repository Discovery
 
 Before making changes, agents MUST:
 
-1. Read this file and applicable nested "AGENTS.md" files.
+1. Read this file and applicable nested `AGENTS.md` files.
 2. Inspect the actual repository structure.
 3. Read relevant project documentation and architectural decisions.
 4. Identify the existing implementation of the requested functionality.
@@ -32,15 +31,15 @@ Before making changes, agents MUST:
 6. Identify reusable utilities, services, libraries, and infrastructure.
 7. Determine the smallest safe change that satisfies the request.
 
-MUST NOT assume that example architectures, directories, commands, or patterns exist in the repository.
+**MUST NOT** assume that example architectures, directories, commands, or patterns exist in the repository.
 
-MUST NOT create parallel infrastructure when an existing implementation can be extended.
+**MUST NOT** create parallel infrastructure when an existing implementation can be extended.
 
 Existing working systems MUST be preserved unless changes are necessary and authorized.
 
-3. Architecture and Engineering Rules
+## 3. Architecture and Engineering Rules
 
-3.1. General Requirements
+### 3.1. General Requirements
 
 - MUST follow established project conventions.
 - MUST maintain clear module responsibilities and ownership.
@@ -56,9 +55,9 @@ Architecture MUST be selected according to actual subsystem requirements, not as
 
 ECS, Data-Oriented Design, OOP, Command, State Machine, Event Bus, Strategy, and other patterns MAY be used when justified.
 
-MUST NOT introduce a pattern solely because it is considered a best practice.
+**MUST NOT** introduce a pattern solely because it is considered a best practice.
 
-3.2. Architecture and Dependency Approval
+### 3.2. Architecture and Dependency Approval
 
 Before introducing or replacing any framework, library, architectural pattern, major abstraction, or infrastructure component, agents MUST:
 
@@ -77,20 +76,20 @@ Agents SHOULD favor mature, actively maintained libraries when they offer a clea
 
 Agents MUST NOT introduce dependencies merely to avoid writing a small amount of straightforward code.
 
-Approval rule: If a proposed solution requires a new dependency, framework, architectural pattern, major abstraction, or substantial replacement of existing infrastructure, implementation MUST wait for explicit user approval.
+**Approval rule:** If a proposed solution requires a new dependency, framework, architectural pattern, major abstraction, or substantial replacement of existing infrastructure, implementation MUST wait for explicit user approval.
 
 Approval of one proposal does not authorize unrelated architectural changes.
 
-3.3. User Decision Protocol
+### 3.3. User Decision Protocol
 
 When approval is required, agents MUST explain:
 
-- Current solution: What already exists and whether it can be reused.
-- Problem: Why a change is necessary.
-- Options: Existing implementation, available libraries, or custom development.
-- Recommendation: The preferred solution and its justification.
-- Trade-offs: Performance, complexity, compatibility, maintenance, and dependencies.
-- Impact: Which systems and files would change.
+- **Current solution:** What already exists and whether it can be reused.
+- **Problem:** Why a change is necessary.
+- **Options:** Existing implementation, available libraries, or custom development.
+- **Recommendation:** The preferred solution and its justification.
+- **Trade-offs:** Performance, complexity, compatibility, maintenance, and dependencies.
+- **Impact:** Which systems and files would change.
 
 Explanations MUST be understandable without advanced programming knowledge.
 
@@ -102,14 +101,13 @@ Agents SHOULD ask only questions that materially affect the implementation.
 
 Routine implementation details within an approved approach do not require repeated approval.
 
-4. Separation of Responsibilities
+## 4. Separation of Responsibilities
 
-4.1. Gameplay Simulation
+### 4.1. Gameplay Simulation
 
 Gameplay simulation MUST remain independent of presentation frameworks.
 
 Simulation rules MUST NOT depend directly on:
-
 - Phaser scenes, sprites, or GameObjects.
 - React components or hooks.
 - DOM APIs.
@@ -118,7 +116,7 @@ Simulation rules MUST NOT depend directly on:
 
 The simulation determines game state. Rendering and UI visualize that state.
 
-4.2. Rendering
+### 4.2. Rendering
 
 Rendering systems MUST:
 
@@ -129,7 +127,7 @@ Rendering systems MUST:
 - Use caching, batching, and visibility management when justified.
 - Preserve deterministic visual variation where required.
 
-4.3. User Interface
+### 4.3. User Interface
 
 React components MUST NOT directly modify authoritative simulation state.
 
@@ -137,7 +135,7 @@ UI components SHOULD focus on presentation, interaction, and state visualization
 
 Shared gameplay rules MUST NOT be duplicated in UI components.
 
-4.4. Networking and Persistence
+### 4.4. Networking and Persistence
 
 - MUST preserve server authority over gameplay state.
 - MUST validate state-changing commands on the server.
@@ -145,7 +143,7 @@ Shared gameplay rules MUST NOT be duplicated in UI components.
 - MUST prevent duplicate application of state-changing operations.
 - MUST preserve existing persistence contracts unless migration is authorized.
 
-5. Turn-Based Simulation
+## 5. Turn-Based Simulation
 
 The rendering loop and gameplay simulation MUST remain independent.
 
@@ -161,7 +159,7 @@ The rendering loop and gameplay simulation MUST remain independent.
 
 Gameplay simulation MUST NOT depend on rendering frame rate.
 
-6. Hexagonal Map Architecture
+## 6. Hexagonal Map Architecture
 
 - MUST use a documented and consistent coordinate convention.
 - MUST separate logical map data from visualization.
@@ -184,7 +182,7 @@ Map rendering SHOULD support, where required:
 
 Before introducing custom map rendering algorithms, agents MUST evaluate existing project functionality and suitable established solutions.
 
-7. Data-Driven Game Content
+## 7. Data-Driven Game Content
 
 Gameplay and visual content SHOULD be configurable without modifying core engine infrastructure.
 
@@ -201,7 +199,7 @@ Applicable content includes terrain, resources, units, buildings, vegetation, de
 
 Agents MUST NOT introduce a new configuration format, registry, or content pipeline without evaluating existing alternatives and obtaining approval.
 
-8. Feature Organization and Module Boundaries
+## 8. Feature Organization and Module Boundaries
 
 The repository's actual structure is authoritative.
 
@@ -219,7 +217,7 @@ Feature-based organization SHOULD be preferred when it improves cohesion and mai
 
 Agents MUST NOT restructure the repository merely to match an example architecture.
 
-9. Assets and Visual Content
+## 9. Assets and Visual Content
 
 - MUST follow existing asset organization and naming conventions.
 - MUST keep related visual variants together.
@@ -237,7 +235,7 @@ Map decorations MUST NOT obscure essential gameplay information.
 
 Rendering MUST remain readable across supported zoom levels.
 
-10. Performance and Scalability
+## 10. Performance and Scalability
 
 Performance changes MUST be evidence-driven.
 
@@ -254,39 +252,29 @@ Agents MUST NOT introduce ECS, custom memory pools, complex caching, or speciali
 
 Performance optimizations MUST preserve gameplay correctness.
 
-11. Naming and Code Conventions
+## 11. Naming and Code Conventions
 
 Agents MUST follow the conventions already established in the repository.
 
 For TypeScript, unless existing conventions differ:
 
-- Types, interfaces, and classes: "PascalCase".
-
-- Functions and variables: "camelCase".
-
-- React components: "PascalCase".
-
-- React hooks: "use" prefix.
-
+- Types, interfaces, and classes: `PascalCase`.
+- Functions and variables: `camelCase`.
+- React components: `PascalCase`.
+- React hooks: `use` prefix.
 - Configuration files: consistent existing naming convention.
-
 - Constants: follow existing project style.
 
 - MUST use descriptive names.
-
 - MUST avoid ambiguous abbreviations.
-
 - MUST maintain consistent casing.
-
-- MUST avoid names such as "Manager2", "NewSystem", or "FinalVersion".
-
+- MUST avoid names such as `Manager2`, `NewSystem`, or `FinalVersion`.
 - MUST NOT rename established public interfaces without authorization.
-
 - MUST NOT perform unrelated formatting changes.
 
 Existing formatter, linter, and TypeScript configuration take precedence over stylistic preferences.
 
-12. Documentation
+## 12. Documentation
 
 Agents MUST update documentation when changing documented behavior, interfaces, configuration, or architectural contracts.
 
@@ -306,13 +294,13 @@ Agents MUST NOT create excessive documentation for trivial changes.
 
 Agents MUST NOT duplicate information already maintained elsewhere.
 
-13. Testing and Validation
+## 13. Testing and Validation
 
 Agents MUST use the commands actually defined by the repository.
 
 Before running validation:
 
-1. Inspect "package.json" and relevant workspace configuration.
+1. Inspect `package.json` and relevant workspace configuration.
 2. Identify available scripts and the correct package manager.
 3. Select checks relevant to the modified components.
 
@@ -332,9 +320,9 @@ Agents MUST NOT claim checks passed unless they were executed successfully.
 
 Unavailable or failing checks MUST be reported accurately.
 
-14. AI Agent Workflow
+## 14. AI Agent Workflow
 
-14.1. Before Implementation
+### 14.1. Before Implementation
 
 Agents MUST:
 
@@ -346,7 +334,7 @@ Agents MUST:
 6. Identify compatibility, performance, and maintenance risks.
 7. Request approval for changes requiring user authorization.
 
-14.2. During Implementation
+### 14.2. During Implementation
 
 Agents MUST:
 
@@ -361,7 +349,7 @@ Agents MUST:
 9. Maintain compatibility with existing data.
 10. Document significant architectural changes.
 
-14.3. Before Finishing
+### 14.3. Before Finishing
 
 Agents MUST:
 
@@ -374,13 +362,13 @@ Agents MUST:
 
 The final response MUST include:
 
-- Implemented: What changed.
-- Files: Main files affected.
-- Validation: Checks performed and results.
-- Limitations: Remaining issues, if any.
-- Approval needed: Any proposed changes not yet authorized.
+- **Implemented:** What changed.
+- **Files:** Main files affected.
+- **Validation:** Checks performed and results.
+- **Limitations:** Remaining issues, if any.
+- **Approval needed:** Any proposed changes not yet authorized.
 
-15. Strict Prohibitions
+## 15. Strict Prohibitions
 
 Agents MUST NOT:
 
@@ -399,9 +387,9 @@ Agents MUST NOT:
 - Change established conventions without justification.
 - Add unnecessary complexity when a simpler solution meets the requirements.
 
-16. Final Engineering Principle
+## 16. Final Engineering Principle
 
-Reuse before building. Evaluate before introducing. Ask before changing architecture.
+**Reuse before building. Evaluate before introducing. Ask before changing architecture.**
 
 Prefer the simplest maintainable solution that satisfies current requirements and preserves necessary extension points.
 
