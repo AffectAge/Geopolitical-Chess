@@ -105,7 +105,7 @@ Do not write "latest". Use exact versions or supported ranges.
 | Styling | Tailwind CSS | 4.3.3 | UI styling and responsive layouts | Reuse existing design conventions |
 | State management | Zustand | 5.0.16 | Client-side application state | Avoid duplicating authoritative server state |
 | Validation | Zod | 4.6.7 | Runtime schema validation | Validate external inputs and data-driven content |
-| Backend | Node.js HTTP API | 26.x LTS | Authentication, game commands, and world data | Server-authoritative operations |
+| Backend | Fastify | 5.x | Authentication, game commands, and world data | Server-authoritative operations |
 | Networking | ws | 8.22.1 | Real-time client-server communication | Validate messages; support reconnect and resynchronization |
 | Database | better-sqlite3 | 13.0.3 | SQLite persistence and transactions | Preserve transactional consistency |
 | Build | Vite | 8.3.5 | Frontend development and production builds | Reuse existing Vite configuration |
@@ -115,8 +115,6 @@ Do not write "latest". Use exact versions or supported ranges.
 | Linting | ESLint | 10.12.0 | Static code analysis | Do not disable rules without justification |
 | Formatting | Prettier | 3.9.10 | Consistent code formatting | Follow repository configuration |
 | Icons | lucide-react | ^1.55.0 | UI icons | Reuse existing icons |
-| Procedural generation | simplex-noise | 4.0.3 | Noise-based procedural generation | Preserve deterministic generation |
-| Development | GitHub Codespaces | Managed | Cloud development environment | Development only; not production hosting |
 
 ### Version Policy
 
@@ -131,6 +129,7 @@ Do not write "latest". Use exact versions or supported ranges.
   - Zod: 4.6.7
   - better-sqlite3: 13.0.3
   - ws: 8.22.1
+  - Fastify: 5.x
   - Other dependencies: versions declared in package.json and resolved in package-lock.json
 
 - Version source of truth:
@@ -152,12 +151,8 @@ Do not write "latest". Use exact versions or supported ranges.
   - Maintain compatibility with Android and iOS mobile browsers.
   - Preserve WebGL rendering and supported Canvas fallback behavior.
   - Preserve compatibility between client and server network protocols.
-  - Preserve compatibility with existing SQLite schemas and saved game data.
   - Maintain deterministic server-side turn simulation.
-  - Avoid Node.js-only APIs in browser code.
-  - Do not introduce platform-specific dependencies without approval.
-  - Do not introduce Redis, PostgreSQL, message brokers, or external infrastructure without explicit user approval.
-
+ 
 ### Validation Commands
 
 - Type checking: `npm run typecheck`
