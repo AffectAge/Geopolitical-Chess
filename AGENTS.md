@@ -10,13 +10,13 @@ This file is the primary operating manual for AI agents working in this reposito
 
 ## Project Snapshot
 
-- Project name: `Online Geopolitic Game`
-- Project type: `web app`
-- One-line description: `This is a global, turn-based, online strategy game.`
-- Lifecycle stage: `Production`
-- Maintainers / owning team: `OGG Team`
-- Default branch: `main`
-- Repo status notes: `none`
+- Project name: Online Geopolitic Game
+- Project type: web app
+- One-line description: This is a global, turn-based, online strategy game.
+- Lifecycle stage: Production
+- Maintainers / owning team: OGG Team
+- Default branch: main
+- Repo status notes: none
 
 ---
 
@@ -63,7 +63,7 @@ Consult these references before making non-trivial changes:
 | Security docs | `<path_or_url>` | `<auth, secrets, permissions, compliance>` |
 | Deployment / runbooks | `<path_or_url>` | `<environment, release, infrastructure changes>` |
 
-If documentation and code disagree, prefer `<code | docs | ask_human>` and mention the mismatch in your final summary.
+If documentation and code disagree, prefer ask human and mention the mismatch in your final summary.
 
 ### Example
 
@@ -83,15 +83,16 @@ Do not write “latest”. Use exact versions or supported ranges.
 
 ### Core Stack
 
-- Language(s): `<language_and_versions>`
-- Runtime(s): `<runtime_and_versions>`
-- Framework(s): `<frameworks_and_versions>`
-- Package manager(s): `<package_managers_and_versions>`
-- Build tool(s): `<build_tools_and_versions>`
-- Database(s): `<db_and_versions>`
-- Messaging / queueing: `<tool_or_none>`
-- Cache / storage: `<tool_or_none>`
-- Hosting / infrastructure: `<cloud | on-prem | hybrid | other>`
+
+- Language(s): TypeScript 6.0.3, JavaScript (ES Modules)
+- Runtime(s): Node.js 26.x LTS, modern web browsers (WebGL/Canvas)
+- Framework(s): React 19.3.1, Phaser 4.2.1, Tailwind CSS 4.3.3, Zustand 5.0.16, Zod 4.6.7
+- Package manager(s): npm (bundled with Node.js 26; package-lock.json)
+- Build tool(s): Vite 8.3.5, TypeScript Compiler 6.0.3, tsx ^4.20.6
+- Database(s): SQLite via better-sqlite3 13.0.3
+- Messaging / queueing: HTTP API, WebSocket (ws 8.22.1); no external message broker or queue
+- Cache / storage: SQLite persistence, in-memory caches, client-side caching
+- Hosting / infrastructure: None
 
 ### Key Libraries And Services
 
