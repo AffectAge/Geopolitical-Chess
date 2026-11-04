@@ -168,9 +168,26 @@ All applicable checks must pass before implementation is considered complete.
 
 ## Architecture
 
-- Architecture style: `<feature-sliced | layered | clean architecture | hexagonal | modular monolith | microservices | event-driven | other>`
-- High-level description: `<how the system is divided and why>`
-- Main modules / bounded contexts: `<module_a, module_b, module_c>`
+- Architecture style: Clean Architecture, Modular Monolith, Domain-Driven Design (DDD) boundaries.
+- High-level description: A server-authoritative, persistent multiplayer grand strategy game.
+
+  The system is divided into:
+  1. Domain simulation — deterministic gameplay rules and calculations.
+  2. Application layer — commands, use cases, turn orchestration, and transactions.
+  3. Infrastructure — database persistence, HTTP API, WebSocket, and external integrations.
+  4. Presentation — React UI, Phaser map rendering, and client-side interaction.
+  5. Content — data-driven definitions, balancing parameters, and visual assets.
+
+Gameplay mechanics must remain independent of rendering,networking, database implementations, and UI frameworks.
+
+The project should evolve as a modular monolith.
+  Microservices must not be introduced without demonstrated need.
+
+- Main modules / bounded contexts: - Domain simulation — deterministic gameplay rules and calculations.
+  - Application layer — commands, use cases, turn orchestration, and transactions.
+  - Infrastructure — database persistence, HTTP API, WebSocket, and external integrations.
+  - Presentation — React UI, Phaser map rendering, and client-side interaction.
+  - Content — data-driven definitions, balancing parameters, and visual assets.
 - Main data flow: `<request/event/render flow>`
 - State management approach: `<if relevant>`
 - Integration boundaries: `<external APIs, internal services, SDKs, jobs, queues>`
