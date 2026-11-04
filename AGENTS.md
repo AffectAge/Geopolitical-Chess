@@ -1,37 +1,22 @@
 # AGENTS.md
 
-> Template for AI coding agents. Replace every placeholder in `<angle_brackets>` with real project data before adopting this file. Remove example rows you do not need, but prefer filling sections over deleting them. This file should be concrete, current, and operational.
-
 ---
 
 ## Purpose
 
 This file is the primary operating manual for AI agents working in this repository.
 
-It should give the agent enough context to:
-
-- understand what the project does;
-- follow the correct architecture and conventions;
-- place code in the right directories;
-- run the right commands for setup, validation, and testing;
-- avoid unsafe or low-quality changes;
-- know when to stop and ask a human.
-
-If this file is vague, outdated, or contradictory, agent output will degrade. Keep it specific.
-
 ---
 
 ## Project Snapshot
 
-- Project name: `<project_name>`
-- Project type: `<web app | api | mobile app | cli | library | monorepo | service | internal tool | other>`
-- One-line description: `<what this project does in one sentence>`
-- Primary users: `<who uses this system>`
-- Business/domain context: `<domain, workflow, or problem space>`
-- Lifecycle stage: `<prototype | mvp | production | mature | legacy modernization>`
-- Maintainers / owning team: `<team_name_or_people>`
-- Default branch: `<main_branch_name>`
-- Repo status notes: `<active refactor | migration in progress | legacy areas | frozen modules | none>`
+- Project name: `Online Geopolitic Game`
+- Project type: `web app`
+- One-line description: `This is a global, turn-based, online strategy game.`
+- Lifecycle stage: `production`
+- Maintainers / owning team: `OGG Team`
+- Default branch: `main`
+- Repo status notes: `none`
 
 ### Fill-In Guidance
 
