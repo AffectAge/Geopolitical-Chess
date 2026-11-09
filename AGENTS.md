@@ -1,8 +1,4 @@
-# AGENTS.md — Mobile Persistent Hex Strategy
-
-> **Status:** approved technical baseline for a **new** repository, dated 2026-11-09. This file describes a proposed project, **not an existing implementation**. Paths, scripts, modules, tests, and CI workflows below are **target contracts to create during bootstrap**. Do not claim that they already exist or have been tested.
->
-> **Evidence policy:** distinguish requirements explicitly confirmed by the owner, engineering proposals supported by primary sources, and game rules still awaiting a decision. Never attribute undocumented internal mechanics to Travian or *The Third World: War of Kings*.
+# AGENTS.md — Mobile Strategy
 
 ## 1. Purpose
 
@@ -16,11 +12,10 @@ This is the primary operating manual for AI coding agents building a mobile-brow
 4. **Target scale:** thousands of concurrently connected players. Initial load-test scenarios should include **1,000 and 5,000 concurrent users**; these are test targets, not verified capacity claims.
 5. **SQLite initially**, with a migration path to a different database if measured requirements justify the change.
 6. **Data-driven content and rules:** entity types, characteristics, balancing parameters, constraints, and visual definitions are versioned data rather than scattered source-code constants.
-7. **Genre references:** Travian and *The Third World: War of Kings*. Their specific gameplay rules must not be copied or assumed without evidence and the owner's approval.
 
 ### Not yet approved — ask before implementing
 
-- Combat, diplomacy, territory, construction, troop training, trading, production, economy, victory conditions, seasons, PvP, and specific resources.
+- Combat, diplomacy, territory, construction, troop training, trading, production, economy and specific resources.
 - World boundaries, world expansion, map generation, and the starting playable area.
 - Action durations, costs, production rates, combat coefficients, or any other numerical balance settings.
 - **Server downtime semantics:** whether real time continues to elapse during an outage or active timers are paused and shifted after recovery.
@@ -30,14 +25,14 @@ This is the primary operating manual for AI coding agents building a mobile-brow
 
 | Field | Value |
 | --- | --- |
-| Project name | Mobile Persistent Hex Strategy — **working technical name**, not approved branding |
+| Project name | Revival Online |
 | Project type | New monorepo: web client, game server, shared contracts, and game data |
-| One-line description | A persistent, mobile-first online strategy game with one authoritative real-time hexagonal world |
+| One-line description | A persistent, mobile online strategy game with one authoritative real-time hexagonal world |
 | Primary users | Mobile-browser players; game administrators and developers |
 | Domain | Persistent-world MMO strategy |
 | Lifecycle stage | Pre-development / architecture planning; **not production** |
 | Maintainer | Mark — requirements owner; development team not yet designated |
-| Default branch | Planned `main` after repository creation |
+| Default branch | `main` |
 | Repository status | New project; no implemented modules, executable scripts, migrations, or CI yet |
 
 ## 3. Agent Principles
@@ -96,8 +91,6 @@ If code and documentation materially disagree, **do not silently choose one**. I
 - [Screeps standalone server](https://github.com/screeps/screeps): an open-source persistent-world MMO and example of separating engine logic from the runtime; **do not automatically adopt its tick model**.
 - [Luanti map blocks](https://docs.luanti.org/for-engine-devs/basic-data-structures/) and [engine architecture](https://docs.luanti.org/for-engine-devs/structure/): examples of chunked world handling; its voxel format is not directly applicable to 2D hex maps.
 - [OWASP WebSocket Security](https://cheatsheetseries.owasp.org/cheatsheets/WebSocket_Security_Cheat_Sheet.html) and [Grafana k6 WebSocket testing](https://grafana.com/docs/k6/latest/using-k6/protocols/websockets/).
-
-Fan-written descriptions of Travian or *The Third World* are not evidence of their server internals. No source code for these commercial game servers was supplied.
 
 ## 5. Tech Stack
 
