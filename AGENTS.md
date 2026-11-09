@@ -12,7 +12,7 @@ This file is the primary operating manual for AI agents working in this reposito
 
 - Project name: Online Geopolitic Game
 - Project type: web app
-- One-line description: This is a global, turn-based, online strategy game.
+- One-line description: This is a global, real time, online strategy game.
 - Lifecycle stage: Production
 - Maintainers / owning team: OGG Team
 - Default branch: main
@@ -101,7 +101,7 @@ Do not write "latest". Use exact versions or supported ranges.
 | Language | TypeScript | 6.0.3 | Type-safe client, server, and simulation code | Strict typing; avoid `any` |
 | Runtime | Node.js | 26.x LTS | Server runtime and development tools | Maintain compatibility with native dependencies |
 | Frontend | React | 19.3.1 | User interface and application components | Keep UI separate from gameplay simulation |
-| Rendering | Phaser | 4.2.1 | Hexagonal map, sprites, animations, and input | Rendering only; no authoritative gameplay logic |
+| Rendering | Phaser | 4.2.1 | Hexagonal map, sprites, animations, and input | Rendering;|
 | Styling | Tailwind CSS | 4.3.3 | UI styling and responsive layouts | Reuse existing design conventions |
 | State management | Zustand | 5.0.16 | Client-side application state | Avoid duplicating authoritative server state |
 | Validation | Zod | 4.6.7 | Runtime schema validation | Validate external inputs and data-driven content |
